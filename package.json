@@ -1,0 +1,33 @@
+{
+    "devDependencies": {
+        "@hotwired/stimulus": "^3.0.0",
+        "@symfony/stimulus-bridge": "^3.0.0",
+        "@symfony/webpack-encore": "^2.0.0",
+        "core-js": "^3.0.0",
+        "markdownlint-cli": "^0.31.1",
+        "regenerator-runtime": "^0.13.2",
+        "sass": "^1.53.0",
+        "sass-loader": "^12.0.0",
+        "standard": "^17.0.0",
+        "stylelint": "^14.9.1",
+        "stylelint-config-sass-guidelines": "^9.0.1",
+        "webpack-notifier": "^1.6.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress",
+        "coding-standards-check/markdownlint": "markdownlint README.md docs/",
+        "coding-standards-check/stylelint": "stylelint --config=.stylelintrc.json 'assets/**/*.scss'",
+        "coding-standards-check/styles": "yarn coding-standards-check/stylelint",
+        "coding-standards-check/standard": "standard",
+        "coding-standards-check/javascript": "yarn coding-standards-check/standard",
+        "coding-standards-check": "yarn coding-standards-check/markdownlint && yarn coding-standards-check/javascript && yarn coding-standards-check/styles",
+        "coding-standards-apply/standard": "standard --fix",
+        "coding-standards-apply/javascript": "yarn coding-standards-apply/standard",
+        "coding-standards-apply": "yarn coding-standards-apply/javascript"
+    }
+}
