@@ -1,4 +1,6 @@
 {
+    "name": "rimi-itk/githubber",
+    "description": "GitHubber",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -40,6 +42,7 @@
         "symfony/twig-bundle": "6.1.*",
         "symfony/validator": "6.1.*",
         "symfony/web-link": "6.1.*",
+        "symfony/webpack-encore-bundle": "^1.15",
         "symfony/yaml": "6.1.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
@@ -85,6 +88,32 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "coding-standards-check/php-cs-fixer": [
+            "php-cs-fixer --config=.php-cs-fixer.dist.php fix --dry-run"
+        ],
+        "coding-standards-check/twigcs": [
+            "twigcs templates"
+        ],
+        "coding-standards-check": [
+            "@coding-standards-check/php-cs-fixer",
+            "@coding-standards-check/twigcs"
+        ],
+        "coding-standards-apply/php-cs-fixer": [
+            "php-cs-fixer --config=.php-cs-fixer.dist.php fix"
+        ],
+        "coding-standards-apply": [
+            "@coding-standards-apply/php-cs-fixer"
+        ],
+        "code-analysis/phpstan": [
+            "phpstan analyse"
+        ],
+        "code-analysis/psalm": [
+            "psalm src tests"
+        ],
+        "code-analysis": [
+            "@code-analysis/phpstan",
+            "@code-analysis/psalm"
         ]
     },
     "conflict": {
@@ -97,6 +126,9 @@
         }
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "friendsoftwig/twigcs": "^6.0",
+        "phpstan/phpstan": "^1.8",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "6.1.*",
         "symfony/css-selector": "6.1.*",
@@ -104,6 +136,7 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^6.1",
         "symfony/stopwatch": "6.1.*",
-        "symfony/web-profiler-bundle": "6.1.*"
+        "symfony/web-profiler-bundle": "6.1.*",
+        "vimeo/psalm": "^4.24"
     }
 }

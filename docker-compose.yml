@@ -72,6 +72,13 @@ services:
       - "traefik.docker.network=frontend"
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-http.rule=Host(`${COMPOSE_DOMAIN}`)"
 
+  node:
+    image: node:16
+    networks:
+      - app
+    volumes:
+      - nfsApp:/app:delegated
+
 volumes:
   # Named volume requires that you have NFS shares enabled (performance boost on Macs).
   # Use `itkdev-docker-compose nfs:enable` to enable NFS shares. If you don't want to use it remove it from here and
