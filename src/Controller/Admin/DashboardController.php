@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Organization;
+use App\Entity\Repository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -17,7 +18,7 @@ class DashboardController extends AbstractDashboardController
     {
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
 
-        return $this->redirect($adminUrlGenerator->setController(OrganizationCrudController::class)->generateUrl());
+        return $this->redirect($adminUrlGenerator->setController(RepositoryCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -28,6 +29,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToCrud('Organization', 'fas fa-list', Organization::class);
+        yield MenuItem::linkToCrud('Repository', 'fas fa-list', Repository::class);
+        yield MenuItem::linkToCrud('Organization', 'fas fa-user', Organization::class);
     }
 }
