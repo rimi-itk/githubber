@@ -4,12 +4,30 @@ Start the show:
 
 ```sh
 docker-compose up --detach
+docker-compose exec phpfpm composer install
+docker-compose exec phpfpm bin/console doctrine:migrations:migrate --no-interaction
 ```
 
 Access the site:
 
 ```sh
 open http://$(docker-compose port nginx 80)
+```
+
+## Organizations
+
+```sh
+docker-compose exec phpfpm bin/console app:organization:create --help
+```
+
+## Repositories
+
+```sh
+docker-compose exec phpfpm bin/console app:repository:update --help
+```
+
+```sh
+docker-compose exec phpfpm bin/console app:repository:clone --help
 ```
 
 ## Development
